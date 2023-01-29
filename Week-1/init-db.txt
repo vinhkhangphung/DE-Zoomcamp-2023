@@ -1,0 +1,7 @@
+docker run -it\
+    -e POSTGRES_USER="khangphung" \
+    -e POSTGRES_PASSWORD="postGres" \
+    -e POSTGRES_DB="nyc_taxi" \
+    -v d:/data-engineering-zoomcamp-main/week_1_basics_n_setup/2_docker_sql/nyc_taxi_postgres_data:/var/lib/postgresql/data \
+    -p 5431:5432 \
+postgres:13
