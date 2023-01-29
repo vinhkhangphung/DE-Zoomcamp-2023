@@ -1,0 +1,7 @@
+docker run -it \
+    -e PGADMIN_DEFAULT_EMAIL="vinhkhangphung@gmail.com" \
+    -e PGADMIN_DEFAULT_PASSWORD="pgadmin4" \
+    -p 8080:80 \
+    --network=pg-network \
+    --name pgadmin \
+    dpage/pgadmin4

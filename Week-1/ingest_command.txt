@@ -1,0 +1,26 @@
+python ingest.py \
+    --user=khangphung \
+    --password=postGres \
+    --host=localhost \
+    --port=5431 \
+    --db_name=nyc_taxi \
+    --table_name_taxi=green_taxi_data \
+    --table_name_lookup=taxi_lookup \
+    --url_taxi="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-01.csv.gz" \
+    --url_lookup="https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv" \
+
+
+docker build -t taxi_ingest:v001 .
+
+docker run -it \
+    --network=pg-network \
+    taxi_ingest:v001 \
+        --user=khangphung \
+        --password=postGres \
+        --host=pg-database \
+        --port=5431 \
+        --db_name=nyc_taxi \
+        --table_name_taxi=green_taxi_data \
+        --table_name_lookup=taxi_lookup \
+        --url_taxi="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-01.csv.gz" \
+        --url_lookup="https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv"
